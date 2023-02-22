@@ -17,8 +17,7 @@ it, simply add the following line to your Podfile:
 pod 'JUNFloatControl'
 ```
 ## Example
-<!--![](./JUNFloatControl.mov)-->
-<video src='JUNFloatControl.mov' width=180/>
+![](./JUNFloatControl.mov)
 
 ## Usage
 ```objc
