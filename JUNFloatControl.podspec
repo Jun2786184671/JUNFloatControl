@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'JUNFloatControl'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of JUNFloatControl.'
+  s.summary          = 'A float control that attaches to the edge of the window'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -32,11 +32,11 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'JUNFloatControl/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'JUNFloatControl' => ['JUNFloatControl/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'JUNFloatControl' => ['JUNFloatControl/Assets/Image/*.png']
+   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'JUNFloatControl/Classes/JUNFloatControl.h', 'JUNFloatControl/Classes/Config/JUNFloatControlConfig.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

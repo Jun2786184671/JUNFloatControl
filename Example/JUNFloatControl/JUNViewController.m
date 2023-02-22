@@ -7,6 +7,8 @@
 //
 
 #import "JUNViewController.h"
+#import <JUNFloatControl/JUNFloatControl.h>
+#import <JUNFlex/JUNFlex.h>
 
 @interface JUNViewController ()
 
@@ -14,16 +16,37 @@
 
 @implementation JUNViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    JUNFloatControlConfig *config = [[JUNFloatControlConfig alloc] init];
+    config.content = [self getExampleContent];
+    JUNFloatControl *control = [[JUNFloatControl alloc] initWithConfig:config];
+    [self.view addSubview:control];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UIView *)getExampleContent {
+    return
+    JUNFlex.list
+    .itemSize(140, 40)
+    .itemSpacing(16)
+    .count(10, ^id _Nonnull(NSUInteger i) {
+        return
+        JUNFlex.hstack
+        .children(@[
+            JUNFlex.item
+            .align(-1, 0)
+            .size(80, CGFLOAT_MAX)
+            .text(
+                [NSString stringWithFormat:@"option %zd", i],
+                [UIFont systemFontOfSize:14],
+                nil
+            ),
+            [[UISwitch alloc] init],
+        ]);
+    });
 }
 
 @end
