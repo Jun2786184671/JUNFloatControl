@@ -57,6 +57,8 @@
         [self handlePanBegin];
     } else if (gesture.state == UIGestureRecognizerStateEnded) {
         [self handlePanEnd];
+    } else if (gesture.state == UIGestureRecognizerStateCancelled) {
+        [self handlePanEnd];
     }
 }
 
@@ -116,7 +118,11 @@
     cornerView.origin = accessoryView.origin;
     self.control.frame = self.control.superview.bounds;
     transitionView.frame = self.control.bounds;
-    contentView.layer.maskedCorners = cornerView.layer.maskedCorners;
+    if (@available(iOS 11.0, *)) {
+        contentView.layer.maskedCorners = cornerView.layer.maskedCorners;
+    } else {
+        // Fallback on earlier versions
+    }
     
     [UIView animateWithDuration:animDuration animations:^{
         transitionView.alpha = 1.0;
@@ -230,20 +236,24 @@
         [UIView animateWithDuration:animDuration animations:^{
             UIView *cornerView = self.control.cornerView;
             cornerView.alpha = 1.0;
-            cornerView.layer.maskedCorners = 0;
-            if (self.control.top == 0) {
-                cornerView.layer.maskedCorners |= ~(kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner);
+            if (@available(iOS 11.0, *)) {
+                cornerView.layer.maskedCorners = 0;
+                if (self.control.top == 0) {
+                    cornerView.layer.maskedCorners |= ~(kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner);
+                }
+                if (self.control.left == 0) {
+                    cornerView.layer.maskedCorners |= ~(kCALayerMaxXMinYCorner | kCALayerMaxXMaxYCorner);
+                }
+                if (self.control.bottom == self.control.superview.height) {
+                    cornerView.layer.maskedCorners |= ~(kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner);
+                }
+                if (self.control.right == self.control.superview.width) {
+                    cornerView.layer.maskedCorners |= ~(kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner);
+                }
+                cornerView.layer.maskedCorners = ~cornerView.layer.maskedCorners;
+            } else {
+                // Fallback on earlier versions
             }
-            if (self.control.left == 0) {
-                cornerView.layer.maskedCorners |= ~(kCALayerMaxXMinYCorner | kCALayerMaxXMaxYCorner);
-            }
-            if (self.control.bottom == self.control.superview.height) {
-                cornerView.layer.maskedCorners |= ~(kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner);
-            }
-            if (self.control.right == self.control.superview.width) {
-                cornerView.layer.maskedCorners |= ~(kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner);
-            }
-            cornerView.layer.maskedCorners = ~cornerView.layer.maskedCorners;
         }];
     }];
     CGPoint recordedLocation = CGPointZero;

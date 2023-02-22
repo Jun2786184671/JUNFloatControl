@@ -29,6 +29,7 @@
 - (void)orientationChange:(NSNotification *)notification {
     [self toggle];
     [self.control.state orientationChange:notification];
+    [self.control.contentView setNeedsLayout];
 }
 
 - (void)handleToggleTransition {
