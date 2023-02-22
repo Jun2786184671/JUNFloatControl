@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'JUNFloatControl_Example' do
+  pod 'JUNFloatControl', :path => '../'
+
+  target 'JUNFloatControl_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
