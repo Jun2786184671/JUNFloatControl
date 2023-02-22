@@ -66,7 +66,6 @@
 		9A7D07FE61B63F0D06B0EBC8 /* Pods-JUNFloatControl_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JUNFloatControl_Example.release.xcconfig"; path = "Target Support Files/Pods-JUNFloatControl_Example/Pods-JUNFloatControl_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A08EB99A18B0B7EDC0B6AA80 /* Pods-JUNFloatControl_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JUNFloatControl_Example.debug.xcconfig"; path = "Target Support Files/Pods-JUNFloatControl_Example/Pods-JUNFloatControl_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		ADF299F9B782C93782FFD3EA /* Pods_JUNFloatControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JUNFloatControl_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9A3A13029A64BB800846226 /* JUNFloatControl.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = JUNFloatControl.mov; sourceTree = "<group>"; };
 		F81E42CC255A6BFB1995BCB0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				2F5BAB89968A7E4416B47948 /* JUNFloatControl.podspec */,
-				B9A3A13029A64BB800846226 /* JUNFloatControl.mov */,
 				F81E42CC255A6BFB1995BCB0 /* README.md */,
 				2C2A0F24539883D9D4B59E5E /* LICENSE */,
 			);
